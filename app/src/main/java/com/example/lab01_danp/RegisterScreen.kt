@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(
     state: AsistenteState,
@@ -32,17 +33,42 @@ fun RegisterScreen(
             modifier = Modifier
                 .padding(25.dp)
         ) {
-            nombreField()
-            fechaField()
-            sangreField()
-            telefonoField()
-            montoField()
+            Text(
+                modifier = Modifier.padding(top = 5.dp),
+                text = "Nombre Completo")
+            TextField(value = state.fullName, onValueChange = {
+                onEvent(AsistenteEvent.SetFullName(it))
+            })
+            Text(
+                modifier = Modifier.padding(top = 5.dp),
+                text = "Fecha de Inscripción")
+            TextField(value = state.dateInscription, onValueChange = {
+                onEvent(AsistenteEvent.SetDateInscription(it))
+            })
+            Text(
+                modifier = Modifier.padding(top = 5.dp),
+                text = "Tipo de sangre")
+            TextField(value = state.bloodType, onValueChange = {
+                onEvent(AsistenteEvent.SetBloodType(it))
+            })
+            Text(
+                modifier = Modifier.padding(top = 5.dp),
+                text = "Teléfono")
+            TextField(value = state.phone, onValueChange = {
+                onEvent(AsistenteEvent.SetPhone(it))
+            })
+            Text(
+                modifier = Modifier.padding(top = 5.dp),
+                text = "Monto Pagado")
+            TextField(value = state.paidMount, onValueChange = {
+                onEvent(AsistenteEvent.SetPaidMount(it))
+            })
 
             Row {
                 Button(
                     modifier = Modifier.padding(10.dp),
                     onClick = {
-
+                        onEvent(AsistenteEvent.SaveAsistente)
                     }) {
                     Text("Registrar")
                 }
@@ -57,50 +83,7 @@ fun RegisterScreen(
         }
     }
 }
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun nombreField(){
-    Text(
-        modifier = Modifier.padding(top = 5.dp),
-        text = "Nombre Completo")
-    TextField(value = "", onValueChange = {})
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun fechaField(){
-    Text(
-        modifier = Modifier.padding(top = 5.dp),
-        text = "Fecha de Inscripción")
-    TextField(value = "", onValueChange = {})
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun sangreField(){
-    Text(
-        modifier = Modifier.padding(top = 5.dp),
-        text = "Tipo de sangre")
-    TextField(value = "", onValueChange = {})
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun telefonoField(){
-    Text(
-        modifier = Modifier.padding(top = 5.dp),
-        text = "Teléfono")
-    TextField(value = "", onValueChange = {})
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun montoField(){
-    Text(
-        modifier = Modifier.padding(top = 5.dp),
-        text = "Monto Pagado")
-    TextField(value = "", onValueChange = {})
-}
 
 
 
